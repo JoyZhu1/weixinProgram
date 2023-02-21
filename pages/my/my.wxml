@@ -1,0 +1,32 @@
+<view class="container">
+  <image class="bg" src="/images/my/my@bg.png" />
+  <v-button wx:if="{{!hasUserInfo}}" class="avatar-position" open-type="getUserInfo" bindtap="getUserProfile">
+    <image slot="img" class="avatar" src="/images/my/my.png" />
+  </v-button>
+  <view wx:if="{{hasUserInfo}}" class="avatar-position avatar-container">
+    <image src="{{userInfo.avatarUrl}}" class="avatar" />
+    <text>{{userInfo.nickName}}</text>
+  </view>
+  <view class="about-container">
+    <view class="about-us">
+      <image src="/images/my/about.png" />
+      <text class="description">关于我们</text>
+    </view>
+    <view class="about-us">
+      <text class="book-num">{{bookCount}}</text>
+      <text class="description">喜欢的书</text>
+    </view>
+  </view>
+  <view class="like-container">
+    <image class="headline" src="/images/my/like.png" />
+    <view class="preview-container">
+      <block wx:for="{{classics}}">
+        <v-preview class="preview" classic="{{item}}" />
+      </block>
+    </view>
+  </view>
+  <!-- <block wx:if="{{!hasUserInfo}}">
+      <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile"> 获取头像昵称 </button>
+      <button wx:else open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    </block> -->
+</view>
